@@ -1,0 +1,14 @@
+mycobot_gripper:
+    # Publish all joint states -----------------------------------
+    joint_state_controller:
+      type: joint_state_controller/JointStateController
+      publish_rate: 50
+
+    # Position Controller ---------------------------------------
+    finger_joint_position_controller:
+      type: effort_controllers/JointPositionController
+      joint: left_outer_base_knuckle_joint
+      pid: {p: 1.0, i: 0, d: 0}
+
+    
+
