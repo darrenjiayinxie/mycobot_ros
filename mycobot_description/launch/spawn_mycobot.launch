@@ -4,7 +4,7 @@
         <arg name="x" value="0.0" />
         <arg name="y" value="0.0" />
         <arg name="z" value="0.0" />
-        <arg name="xacro_file_path" value="$(find mycobot_description)/robot/mycobot.xacro" />
+        <arg name="xacro_file_path" value="$(find mycobot_description)/urdf/mycobot.xacro" />
         <arg name="robot_name" value="mycobot" />
     </include>
 </launch>

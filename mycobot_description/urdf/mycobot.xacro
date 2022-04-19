@@ -1,8 +1,5 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="mycobot">
-
-	<!--xacro:property name="width" value=".2" /-->
-	<!--xacro:property name="M_PI" value="3.1415926536"/-->
 	
 	<!--damping force which is proportional to the velocity of the moving body-->
 	<xacro:property name="Joint_damp" value="1e-3"/>
@@ -25,7 +22,7 @@
 		</visual>
 		<collision>
 			<geometry>
-		  		<mesh filename="package://mycobot_gazebo/models/mycobot/meshes/body_link.dae"/>
+		  		<mesh filename="package://mycobot_description/models/mycobot/meshes/body_link.dae"/>
 		  	</geometry>
 			<origin xyz = "0.0 0 1e-5" rpy = " 0 0 0"/>
 		</collision>
@@ -222,7 +219,7 @@
  	
  	<joint name="arm1_joint" type="revolute">
 		<axis xyz="0 0 1"/>
-		<limit effort = "30.0" lower = "-2.88" upper = "2.88" velocity = "0.05"/>
+		<limit effort = "30.0" lower = "-2.88" upper = "2.88" velocity = "0.2"/>
 		<dynamics damping="${Joint_damp}" friction= "${Joint_friction}"/>
 		<parent link="body_link"/>
 		<child link="arm1_link"/>
@@ -231,7 +228,7 @@
 	
 	<joint name="arm2_joint" type="revolute">
 		<axis xyz="0 0 1"/>
-		<limit effort = "30.0" lower = "-2.88" upper = "2.88" velocity = "0.05"/>
+		<limit effort = "30.0" lower = "-2.88" upper = "2.88" velocity = "0.2"/>
 		<dynamics damping="${Joint_damp}" friction= "${Joint_friction}"/>
 		<parent link="arm1_link"/>
 		<child link="arm2_link"/>
@@ -240,7 +237,7 @@
 	
 	<joint name="arm3_joint" type="revolute">
 		<axis xyz=" 0 0 1"/>
-		<limit effort = "30.0" lower = "-2.88" upper = "2.88" velocity = "0.05"/>
+		<limit effort = "30.0" lower = "-2.88" upper = "2.88" velocity = "0.2"/>
 		<dynamics damping="${Joint_damp}" friction= "${Joint_friction}"/>
 		<parent link="arm2_link"/>
 		<child link="arm3_link"/>
@@ -249,7 +246,7 @@
 
 	<joint name="arm4_joint" type="revolute">
 		<axis xyz=" 0 0 1"/>
-		<limit effort = "30.0" lower = "-2.88" upper = "2.88" velocity = "0.05"/>
+		<limit effort = "30.0" lower = "-2.88" upper = "2.88" velocity = "0.2"/>
 		<dynamics damping="${Joint_damp}" friction= "${Joint_friction}"/>
 		<parent link="arm3_link"/>
 		<child link="arm4_link"/>
@@ -258,7 +255,7 @@
 	
 	<joint name="arm5_joint" type="revolute">
 		<axis xyz="0 0 1"/>
-		<limit effort = "30.0" lower = "-2.88" upper = "2.88" velocity = "0.05"/>
+		<limit effort = "30.0" lower = "-2.88" upper = "2.88" velocity = "0.2"/>
 		<dynamics damping="${Joint_damp}" friction= "${Joint_friction}"/>
 		<parent link="arm4_link"/>
 		<child link="arm5_link"/>
@@ -267,7 +264,7 @@
 	
 	<joint name="arm5_flange_joint" type="revolute">
 		<axis xyz="0 0 1"/>
-		<limit effort = "30.0" lower = "-3.05" upper = "3.05" velocity = "0.05"/>
+		<limit effort = "30.0" lower = "-3.05" upper = "3.05" velocity = "0.2"/>
 		<dynamics damping="${Joint_damp}" friction= "${Joint_friction}"/>
 		<parent link="arm5_link"/>
 		<child link="arm5_flange"/>
@@ -280,10 +277,10 @@
 		<transmission name="tran_${joint_name}">
 			<type>transmission_interface/SimpleTransmission</type>
 			<joint name="${joint_name}">
-				<hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+				<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
 			</joint>
 			<actuator name="motor_${joint_name}">
-				<hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+				<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
 				<mechanicalReduction>1</mechanicalReduction>
 			</actuator>
 		</transmission>
