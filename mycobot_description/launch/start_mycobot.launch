@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<launch>
-    <include file="$(find mycobot_description)/launch/spawn_mycobot.launch"/>
-    <include file="$(find mycobot_description)/launch/mycobot_control.launch"/>
-</launch>

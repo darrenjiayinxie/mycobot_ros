@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+	<xacro:property name="kp" value="1e5"/>
+	<xacro:property name="kd" value="0"/>
+	<xacro:property name="mu" value="0.5"/>
+	
+	<gazebo reference="body_link">
+		<mu1>${mu}</mu1>
+		<mu2>${mu}</mu2>
+		<kp>${kp}</kp>
+		<kd>${kd}</kd>
+	</gazebo>
+	
+	<gazebo reference="arm1_link">
+	    <mu1>${mu}</mu1>
+	    <mu2>${mu}</mu2>
+	    <kp>${kp}</kp>
+        <kd>${kd}</kd>
+  	</gazebo>
+  	
+	<gazebo reference="arm2_link">
+	    <mu1>${mu}</mu1>
+	    <mu2>${mu}</mu2>
+	    <kp>${kp}</kp>
+        <kd>${kd}</kd>
+  	</gazebo>
+  	
+	<gazebo reference="arm3_link">
+	    <mu1>${mu}</mu1>
+	    <mu2>${mu}</mu2>
+	    <kp>${kp}</kp>
+        <kd>${kd}</kd>
+  	</gazebo>
+  	
+  	
+	<gazebo reference="arm4_link">
+	    <mu1>${mu}</mu1>
+	    <mu2>${mu}</mu2>
+	    <kp>${kp}</kp>
+        <kd>${kd}</kd>
+  	</gazebo>
+  	
+    <gazebo reference="arm5_link">
+	    <mu1>${mu}</mu1>
+	    <mu2>${mu}</mu2>
+	    <kp>${kp}</kp>
+        <kd>${kd}</kd>
+  	</gazebo>
+  	
+	<gazebo reference="arm5_flange">
+	    <mu1>${mu}</mu1>
+	    <mu2>${mu}</mu2>
+	    <kp>${kp}</kp>
+        <kd>${kd}</kd>
+  	</gazebo>
+  	
+  	
+</robot>

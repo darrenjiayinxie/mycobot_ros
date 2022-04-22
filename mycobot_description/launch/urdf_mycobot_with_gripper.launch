@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+    <include file="$(find mycobot_description)/launch/urdf_visualize.launch">
+        <arg name="xacro_file_path" value="$(find mycobot_description)/robots/mycobot_with_gripper.urdf.xacro" />
+        <arg name="urdf_rviz" value="$(find mycobot_description)/rviz_config/mycobot_with_gripper.rviz" />
+    </include>
+</launch>

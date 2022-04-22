@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+    <include file="$(find mycobot_gazebo)/launch/spawn_xacro.launch">
+        <arg name="x" value="0.0" />
+        <arg name="y" value="0.0" />
+        <arg name="z" value="0.0" />
+        <arg name="xacro_file_path" value="$(find mycobot_description)/robots/mycobot_with_gripper_camera.urdf.xacro" />
+        <arg name="robot_name" value="mycobot" />
+    </include>
+</launch>
