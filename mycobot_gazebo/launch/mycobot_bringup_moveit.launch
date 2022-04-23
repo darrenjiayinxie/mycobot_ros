@@ -1,0 +1,16 @@
+<launch>
+
+    <!-- Launch Gazebo  -->
+    <include file="$(find mycobot_gazebo)/launch/mycobot_gazebo_world.launch" />
+
+    <!-- ros_control arm launch file -->
+    <include file="$(find mycobot_gazebo)/launch/mycobot_gazebo_states.launch" />   
+
+    <!-- ros_control trajectory control dof arm launch file -->
+    <include file="$(find mycobot_gazebo)/launch/mycobot_trajectory_controller.launch" />
+
+    <!-- moveit launch file -->
+    <include file="$(find mycobot_moveit_config)/launch/moveit_planning_execution.launch" />
+
+</launch>
+

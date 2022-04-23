@@ -14,6 +14,4 @@ controller_list:
       - left_outer_base_knuckle_joint
 initial:  # Define initial robot poses per group
   - group: arm
-    pose: gome
-  - group: gripper
     pose: home

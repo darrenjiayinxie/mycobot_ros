@@ -7,7 +7,7 @@
   <arg name="headless" default="false"/>
   <arg name="pause" default="false"/>
   <arg name="verbose" default="true"/>
-  <arg name="world_file" default="$(find mycobot_gazebo)/worlds/model.world"/>
+  <arg name="world_file" default="$(find mycobot_gazebo)/worlds/experiment.world"/>
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="world_name" value="$(arg world_file)"/>
@@ -17,7 +17,6 @@
     <arg name="use_sim_time" value="true"/>
     <arg name="headless" value="$(arg headless)"/>
     <arg name="verbose" value="$(arg verbose)"/>
-    <!--env name="GAZEBO_MODEL_PATH" value="$(find simulation_gazebo)/models:$(optenv GAZEBO_MODEL_PATH)"/-->
   </include>
 <!--  Include launch.xml if needed -->
 </launch>

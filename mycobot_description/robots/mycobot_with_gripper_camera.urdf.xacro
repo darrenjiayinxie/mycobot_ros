@@ -19,7 +19,7 @@
   
   <!-- Mycobot arm -->
   <xacro:mycobot_arm parent="world">
-    <origin xyz="0 0 0" rpy="0 0 0" />
+    <origin xyz="0 0 0.95" rpy="0 0 0" />
   </xacro:mycobot_arm>
   
   <!-- Mycobot gripper -->
@@ -28,8 +28,8 @@
   </xacro:mycobot_gripper>  
   
   <!-- D435 camera -->
-  <xacro:sensor_d435 name="camera" topics_ns="camera" parent="world" publish_pointcloud="true">
-    <origin xyz="-0.5 0 0.5" rpy="0 0 0" />
+  <xacro:sensor_d435 name="d435_camera" topics_ns="d435_camera" parent="world" publish_pointcloud="true">
+    <origin xyz="0 0.5 1.5" rpy="0 ${pi/2} 0" />
   </xacro:sensor_d435>  
   
 </robot>

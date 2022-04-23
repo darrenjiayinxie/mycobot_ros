@@ -2,9 +2,9 @@
 <launch>
     <include file="$(find mycobot_gazebo)/launch/gazebo_empty_world.launch"/>
     <include file="$(find mycobot_gazebo)/launch/spawn_mycobot.launch"/>
-    <include file="$(find mycobot_control)/launch/mycobot_group_control.launch"/>
+    <include file="$(find mycobot_control)/launch/mycobot_trajectory_control.launch"/>
     
     <arg name="gui" default="True" />
     <param name="use_gui" value="$(arg gui)" />
-    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find mycobot_gazebo)/rviz_config/urdf.rviz" required="true" />
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find mycobot_gazebo)/rviz_config/mycobot_with_gripper_camera.rviz" required="true" />
 </launch>

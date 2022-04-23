@@ -19,16 +19,10 @@
         <joint name="arm5_flange_joint"/>
     </group>
     <group name="gripper">
-        <joint name="gripper_base_joint"/>
-        <joint name="left_inner_base_knuckle_joint"/>
-        <joint name="left_inner_knuckle_finger_joint"/>
         <joint name="left_outer_base_knuckle_joint"/>
-        <joint name="right_inner_base_knuckle_joint"/>
-        <joint name="right_inner_knuckle_finger_joint"/>
-        <joint name="right_outer_base_knuckle_joint"/>
     </group>
     <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded arms'-->
-    <group_state name="gome" group="arm">
+    <group_state name="home" group="arm">
         <joint name="arm1_joint" value="0"/>
         <joint name="arm2_joint" value="0"/>
         <joint name="arm3_joint" value="0"/>
@@ -36,31 +30,30 @@
         <joint name="arm5_flange_joint" value="0"/>
         <joint name="arm5_joint" value="0"/>
     </group_state>
-    <group_state name="home" group="gripper">
-        <joint name="left_outer_base_knuckle_joint" value="0"/>
-    </group_state>
     <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
     <end_effector name="gripper" parent_link="arm5_flange" group="gripper"/>
+    <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
+    <virtual_joint name="visual_joint" type="fixed" parent_frame="world" child_link="body_link"/>
     <!--PASSIVE JOINT: Purpose: this element is used to mark joints that are not actuated-->
-    <passive_joint name="left_inner_base_knuckle_joint"/>
     <passive_joint name="left_inner_knuckle_finger_joint"/>
+    <passive_joint name="left_inner_base_knuckle_joint"/>
     <passive_joint name="right_inner_base_knuckle_joint"/>
     <passive_joint name="right_inner_knuckle_finger_joint"/>
     <passive_joint name="right_outer_base_knuckle_joint"/>
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
     <disable_collisions link1="arm1_link" link2="arm2_link" reason="Adjacent"/>
     <disable_collisions link1="arm1_link" link2="body_link" reason="Adjacent"/>
-    <disable_collisions link1="arm1_link" link2="camera_link" reason="Never"/>
+    <disable_collisions link1="arm1_link" link2="d435_camera_link" reason="Never"/>
     <disable_collisions link1="arm2_link" link2="arm3_link" reason="Adjacent"/>
     <disable_collisions link1="arm2_link" link2="body_link" reason="Never"/>
-    <disable_collisions link1="arm2_link" link2="camera_link" reason="Never"/>
+    <disable_collisions link1="arm2_link" link2="d435_camera_link" reason="Never"/>
     <disable_collisions link1="arm3_link" link2="arm4_link" reason="Adjacent"/>
     <disable_collisions link1="arm3_link" link2="body_link" reason="Never"/>
-    <disable_collisions link1="arm3_link" link2="camera_link" reason="Never"/>
+    <disable_collisions link1="arm3_link" link2="d435_camera_link" reason="Never"/>
     <disable_collisions link1="arm4_link" link2="arm5_flange" reason="Never"/>
     <disable_collisions link1="arm4_link" link2="arm5_link" reason="Adjacent"/>
     <disable_collisions link1="arm4_link" link2="body_link" reason="Never"/>
-    <disable_collisions link1="arm4_link" link2="camera_link" reason="Never"/>
+    <disable_collisions link1="arm4_link" link2="d435_camera_link" reason="Never"/>
     <disable_collisions link1="arm4_link" link2="gripper_base_link" reason="Never"/>
     <disable_collisions link1="arm4_link" link2="left_finger_link" reason="Never"/>
     <disable_collisions link1="arm4_link" link2="left_inner_knuckle_link" reason="Never"/>
@@ -70,7 +63,7 @@
     <disable_collisions link1="arm4_link" link2="right_outer_knuckle_link" reason="Never"/>
     <disable_collisions link1="arm5_flange" link2="arm5_link" reason="Adjacent"/>
     <disable_collisions link1="arm5_flange" link2="body_link" reason="Never"/>
-    <disable_collisions link1="arm5_flange" link2="camera_link" reason="Never"/>
+    <disable_collisions link1="arm5_flange" link2="d435_camera_link" reason="Never"/>
     <disable_collisions link1="arm5_flange" link2="gripper_base_link" reason="Adjacent"/>
     <disable_collisions link1="arm5_flange" link2="left_finger_link" reason="Never"/>
     <disable_collisions link1="arm5_flange" link2="left_inner_knuckle_link" reason="Never"/>
@@ -79,7 +72,7 @@
     <disable_collisions link1="arm5_flange" link2="right_inner_knuckle_link" reason="Never"/>
     <disable_collisions link1="arm5_flange" link2="right_outer_knuckle_link" reason="Never"/>
     <disable_collisions link1="arm5_link" link2="body_link" reason="Never"/>
-    <disable_collisions link1="arm5_link" link2="camera_link" reason="Never"/>
+    <disable_collisions link1="arm5_link" link2="d435_camera_link" reason="Never"/>
     <disable_collisions link1="arm5_link" link2="gripper_base_link" reason="Never"/>
     <disable_collisions link1="arm5_link" link2="left_finger_link" reason="Never"/>
     <disable_collisions link1="arm5_link" link2="left_inner_knuckle_link" reason="Never"/>
@@ -87,7 +80,7 @@
     <disable_collisions link1="arm5_link" link2="right_finger_link" reason="Never"/>
     <disable_collisions link1="arm5_link" link2="right_inner_knuckle_link" reason="Never"/>
     <disable_collisions link1="arm5_link" link2="right_outer_knuckle_link" reason="Never"/>
-    <disable_collisions link1="body_link" link2="camera_link" reason="Adjacent"/>
+    <disable_collisions link1="body_link" link2="d435_camera_link" reason="Adjacent"/>
     <disable_collisions link1="body_link" link2="gripper_base_link" reason="Never"/>
     <disable_collisions link1="body_link" link2="left_finger_link" reason="Never"/>
     <disable_collisions link1="body_link" link2="left_inner_knuckle_link" reason="Never"/>
@@ -95,13 +88,13 @@
     <disable_collisions link1="body_link" link2="right_finger_link" reason="Never"/>
     <disable_collisions link1="body_link" link2="right_inner_knuckle_link" reason="Never"/>
     <disable_collisions link1="body_link" link2="right_outer_knuckle_link" reason="Never"/>
-    <disable_collisions link1="camera_link" link2="gripper_base_link" reason="Never"/>
-    <disable_collisions link1="camera_link" link2="left_finger_link" reason="Never"/>
-    <disable_collisions link1="camera_link" link2="left_inner_knuckle_link" reason="Never"/>
-    <disable_collisions link1="camera_link" link2="left_outer_knuckle_link" reason="Never"/>
-    <disable_collisions link1="camera_link" link2="right_finger_link" reason="Never"/>
-    <disable_collisions link1="camera_link" link2="right_inner_knuckle_link" reason="Never"/>
-    <disable_collisions link1="camera_link" link2="right_outer_knuckle_link" reason="Never"/>
+    <disable_collisions link1="d435_camera_link" link2="gripper_base_link" reason="Never"/>
+    <disable_collisions link1="d435_camera_link" link2="left_finger_link" reason="Never"/>
+    <disable_collisions link1="d435_camera_link" link2="left_inner_knuckle_link" reason="Never"/>
+    <disable_collisions link1="d435_camera_link" link2="left_outer_knuckle_link" reason="Never"/>
+    <disable_collisions link1="d435_camera_link" link2="right_finger_link" reason="Never"/>
+    <disable_collisions link1="d435_camera_link" link2="right_inner_knuckle_link" reason="Never"/>
+    <disable_collisions link1="d435_camera_link" link2="right_outer_knuckle_link" reason="Never"/>
     <disable_collisions link1="gripper_base_link" link2="left_finger_link" reason="Never"/>
     <disable_collisions link1="gripper_base_link" link2="left_inner_knuckle_link" reason="Adjacent"/>
     <disable_collisions link1="gripper_base_link" link2="left_outer_knuckle_link" reason="Adjacent"/>
