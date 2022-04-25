@@ -12,5 +12,6 @@
 5. `git clone https://github.com/pal-robotics/realsense_gazebo_plugin.git`
 6. `git clone https://github.com/roboticsgroup/roboticsgroup_gazebo_plugins.git`
 7. `sudo apt install ros-noetic-ros-controllers`
+8. `sudo apt-get install ros-noetic-rqt-joint-trajectory-controller`
 ## Acknowledgement
 
