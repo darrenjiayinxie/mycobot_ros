@@ -3,19 +3,17 @@
   <arg name="paused" default="false"/>
   <arg name="gazebo_gui" default="true"/>
   <arg name="initial_joint_positions" doc="Initial joint configuration of the robot"
-       default=" -J arm1_joint 0 -J arm2_joint 0 -J arm3_joint 0 -J arm4_joint 0 -J arm5_flange_joint 0 -J arm5_joint 0"/>
-	<arg name="world_file" default="$(find mycobot_gazebo)/worlds/experiment.world"/>
-	<arg name="xacro_file_path" default="$(find mycobot_description)/robots/mycobot_with_gripper_camera.urdf.xacro" />
-  <arg name="robot_name" default="" />
+       default=" -J arm1_joint 0 -J arm2_joint 0 -J arm3_joint 0 -J arm4_joint 0 -J arm5_flange_joint 0 -J arm5_joint 0 -J left_outer_base_knuckle_joint 0"/>
+
   <!-- startup simulated world -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" default="$(arg world_file)"/>
+    <arg name="world_name" default="worlds/empty.world"/>
     <arg name="paused" value="true"/>
     <arg name="gui" value="$(arg gazebo_gui)"/>
   </include>
 
   <!-- send robot urdf to param server -->
-  <param name="robot_description" value ="$(find xacro)/xacro $(arg xacro_file_path)" />
+  <param name="robot_description" textfile="$(find mycobot_moveit_config)/config/gazebo_mycobot.urdf" />
 
   <!-- unpause only after loading robot model -->
   <arg name="unpause" value="$(eval '' if arg('paused') else '-unpause')" />

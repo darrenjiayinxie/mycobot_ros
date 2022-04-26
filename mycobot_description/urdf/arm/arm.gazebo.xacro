@@ -16,44 +16,44 @@
 	    <mu1>${mu}</mu1>
 	    <mu2>${mu}</mu2>
 	    <kp>${kp}</kp>
-        <kd>${kd}</kd>
-  	</gazebo>
+      <kd>${kd}</kd>
+  </gazebo>
   	
 	<gazebo reference="arm2_link">
 	    <mu1>${mu}</mu1>
 	    <mu2>${mu}</mu2>
 	    <kp>${kp}</kp>
-        <kd>${kd}</kd>
-  	</gazebo>
+      <kd>${kd}</kd>
+  </gazebo>
   	
 	<gazebo reference="arm3_link">
 	    <mu1>${mu}</mu1>
 	    <mu2>${mu}</mu2>
 	    <kp>${kp}</kp>
-        <kd>${kd}</kd>
-  	</gazebo>
+      <kd>${kd}</kd>
+  </gazebo>
   	
   	
 	<gazebo reference="arm4_link">
 	    <mu1>${mu}</mu1>
 	    <mu2>${mu}</mu2>
 	    <kp>${kp}</kp>
-        <kd>${kd}</kd>
-  	</gazebo>
+      <kd>${kd}</kd>
+  </gazebo>
   	
-    <gazebo reference="arm5_link">
-	    <mu1>${mu}</mu1>
-	    <mu2>${mu}</mu2>
-	    <kp>${kp}</kp>
-        <kd>${kd}</kd>
-  	</gazebo>
+  <gazebo reference="arm5_link">
+    <mu1>${mu}</mu1>
+    <mu2>${mu}</mu2>
+    <kp>${kp}</kp>
+    <kd>${kd}</kd>
+	</gazebo>
   	
 	<gazebo reference="arm5_flange">
-	    <mu1>${mu}</mu1>
-	    <mu2>${mu}</mu2>
-	    <kp>${kp}</kp>
-        <kd>${kd}</kd>
-  	</gazebo>
+    <mu1>${mu}</mu1>
+    <mu2>${mu}</mu2>
+    <kp>${kp}</kp>
+    <kd>${kd}</kd>
+  </gazebo>
   	
   	
 </robot>

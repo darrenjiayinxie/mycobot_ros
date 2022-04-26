@@ -170,9 +170,6 @@
 			</inertial>
 		</link>
 
-
-
-
 		<!-- defining the joints -->
 		<joint name="arm1_joint" type="revolute">
 			<axis xyz="0 0 1"/>
@@ -227,7 +224,7 @@
 			<child link="arm5_flange"/>
 			<origin xyz= "0 0.0456 0" rpy = "-1.5708 0 0"/>
 		</joint>
-
+		
 	</xacro:macro>
 
 </robot>

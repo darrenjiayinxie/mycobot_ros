@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
   <!-- Load robot trajectory controller configurations -->
-  <rosparam file="$(find mycobot_control)/config/mycobot_trajectory_control.yaml" command="load" />
+  <rosparam file="$(find mycobot_gazebo)/config/mycobot_trajectory_control.yaml" command="load" />
+  
+  <!-- Load gazebo controller configurations -->
+  <rosparam file="$(find mycobot_gazebo)/config/mycobot_gazebo_control.yaml" command="load" />
   
   <!-- load the controllers -->
   <node name="arm_controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="/mycobot" args=" arm_joint_position_controller finger_joint_position_controller "/>

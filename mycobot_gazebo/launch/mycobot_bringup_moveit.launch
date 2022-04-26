@@ -10,7 +10,7 @@
     <include file="$(find mycobot_gazebo)/launch/mycobot_trajectory_controller.launch" />
 
     <!-- moveit launch file -->
-    <include file="$(find mycobot_moveit_config)/launch/moveit_planning_execution.launch" />
+    <include file="$(find mycobot_gazebo)/launch/mycobot_planning_execution.launch" />
 
 </launch>
 

@@ -9,19 +9,27 @@
     <!--JOINTS: When a joint is specified, the child link of that joint (which will always exist) is automatically included-->
     <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
     <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
-    <group name="arm">
-        <joint name="body_joint"/>
-        <joint name="arm1_joint"/>
-        <joint name="arm2_joint"/>
-        <joint name="arm3_joint"/>
-        <joint name="arm4_joint"/>
-        <joint name="arm5_joint"/>
-        <joint name="arm5_flange_joint"/>
-    </group>
     <group name="gripper">
         <joint name="left_outer_base_knuckle_joint"/>
     </group>
+    <group name="arm">
+        <link name="body_link"/>
+        <link name="arm1_link"/>
+        <link name="arm2_link"/>
+        <link name="arm3_link"/>
+        <link name="arm4_link"/>
+        <link name="arm5_link"/>
+        <link name="arm5_flange"/>
+        <link name="gripper_base_link"/>
+        <link name="grasping_frame"/>
+    </group>
     <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded arms'-->
+    <group_state name="open" group="gripper">
+        <joint name="left_outer_base_knuckle_joint" value="0"/>
+    </group_state>
+    <group_state name="close" group="gripper">
+        <joint name="left_outer_base_knuckle_joint" value="-0.75"/>
+    </group_state>
     <group_state name="home" group="arm">
         <joint name="arm1_joint" value="0"/>
         <joint name="arm2_joint" value="0"/>
@@ -31,15 +39,9 @@
         <joint name="arm5_joint" value="0"/>
     </group_state>
     <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
-    <end_effector name="gripper" parent_link="arm5_flange" group="gripper"/>
+    <end_effector name="gripper_ee" parent_link="grasping_frame" group="gripper"/>
     <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
     <virtual_joint name="visual_joint" type="fixed" parent_frame="world" child_link="body_link"/>
-    <!--PASSIVE JOINT: Purpose: this element is used to mark joints that are not actuated-->
-    <passive_joint name="left_inner_knuckle_finger_joint"/>
-    <passive_joint name="left_inner_base_knuckle_joint"/>
-    <passive_joint name="right_inner_base_knuckle_joint"/>
-    <passive_joint name="right_inner_knuckle_finger_joint"/>
-    <passive_joint name="right_outer_base_knuckle_joint"/>
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
     <disable_collisions link1="arm1_link" link2="arm2_link" reason="Adjacent"/>
     <disable_collisions link1="arm1_link" link2="body_link" reason="Adjacent"/>
@@ -98,9 +100,11 @@
     <disable_collisions link1="gripper_base_link" link2="left_finger_link" reason="Never"/>
     <disable_collisions link1="gripper_base_link" link2="left_inner_knuckle_link" reason="Adjacent"/>
     <disable_collisions link1="gripper_base_link" link2="left_outer_knuckle_link" reason="Adjacent"/>
+    <disable_collisions link1="gripper_base_link" link2="right_finger_link" reason="User"/>
     <disable_collisions link1="gripper_base_link" link2="right_inner_knuckle_link" reason="Adjacent"/>
     <disable_collisions link1="gripper_base_link" link2="right_outer_knuckle_link" reason="Adjacent"/>
     <disable_collisions link1="left_finger_link" link2="left_inner_knuckle_link" reason="Adjacent"/>
+    <disable_collisions link1="left_finger_link" link2="left_outer_knuckle_link" reason="User"/>
     <disable_collisions link1="left_finger_link" link2="right_finger_link" reason="Never"/>
     <disable_collisions link1="left_finger_link" link2="right_inner_knuckle_link" reason="Never"/>
     <disable_collisions link1="left_finger_link" link2="right_outer_knuckle_link" reason="Never"/>
@@ -112,5 +116,6 @@
     <disable_collisions link1="left_outer_knuckle_link" link2="right_inner_knuckle_link" reason="Never"/>
     <disable_collisions link1="left_outer_knuckle_link" link2="right_outer_knuckle_link" reason="Never"/>
     <disable_collisions link1="right_finger_link" link2="right_inner_knuckle_link" reason="Adjacent"/>
+    <disable_collisions link1="right_finger_link" link2="right_outer_knuckle_link" reason="User"/>
     <disable_collisions link1="right_inner_knuckle_link" link2="right_outer_knuckle_link" reason="Never"/>
 </robot>

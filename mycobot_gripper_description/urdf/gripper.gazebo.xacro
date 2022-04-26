@@ -32,16 +32,16 @@
   		parent_joint="left_outer_base_knuckle_joint" mimic_joint="left_inner_knuckle_finger_joint"
     	has_pid="true" multiplier="-1.0" max_effort="10.0" />
     
-  <xacro:mimic_joint_plugin_gazebo name_prefix="right_inner_base_knuckle_joint"
-		parent_joint="left_outer_base_knuckle_joint" mimic_joint="right_inner_base_knuckle_joint"
-  	has_pid="true" multiplier="-1.0" max_effort="10.0" />
-  
-  <xacro:mimic_joint_plugin_gazebo name_prefix="right_inner_knuckle_finger_joint"
-		parent_joint="left_outer_base_knuckle_joint" mimic_joint="right_inner_knuckle_finger_joint"
-  	has_pid="true" multiplier="1.0" max_effort="10.0" />
-  	
-  <xacro:mimic_joint_plugin_gazebo name_prefix="right_outer_base_knuckle_joint"
-		parent_joint="left_outer_base_knuckle_joint" mimic_joint="right_outer_base_knuckle_joint"
-  	has_pid="true" multiplier="-1.0" max_effort="10.0" />
+    <xacro:mimic_joint_plugin_gazebo name_prefix="right_inner_base_knuckle_joint"
+  		parent_joint="left_outer_base_knuckle_joint" mimic_joint="right_inner_base_knuckle_joint"
+    	has_pid="true" multiplier="-1.0" max_effort="10.0" />
+    
+    <xacro:mimic_joint_plugin_gazebo name_prefix="right_inner_knuckle_finger_joint"
+  		parent_joint="left_outer_base_knuckle_joint" mimic_joint="right_inner_knuckle_finger_joint"
+    	has_pid="true" multiplier="1.0" max_effort="10.0" />
+    	
+    <xacro:mimic_joint_plugin_gazebo name_prefix="right_outer_base_knuckle_joint"
+  		parent_joint="left_outer_base_knuckle_joint" mimic_joint="right_outer_base_knuckle_joint"
+    	has_pid="true" multiplier="-1.0" max_effort="10.0" />
     	
 </robot>

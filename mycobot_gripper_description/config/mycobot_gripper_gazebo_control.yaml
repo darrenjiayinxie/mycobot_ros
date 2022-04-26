@@ -3,18 +3,20 @@
 # parachute, counteracting gravity, and causing some of the wheels to lose
 # contact with the ground, so the robot won't be able to properly navigate. See
 # https://github.com/ros-simulation/gazebo_ros_pkgs/issues/612
-
+mycobot_gripper:
+  gazebo_ros_control:
+    pid_gains:
+      # these gains are used by the gazebo_ros_control plugin
+      left_outer_base_knuckle_joint:
+        p: 1.0
+        i: 0.0
+        d: 0.0
+        i_clamp: 0.2
+        antiwindup: false
+        publish_state: true
+        
 gazebo_ros_control:
   pid_gains:
-    # these gains are used by the gazebo_ros_control plugin
-    left_outer_base_knuckle_joint:
-      p: 1.0
-      i: 0.0
-      d: 0.0
-      i_clamp: 0.2
-      antiwindup: false
-      publish_state: true
-      
     # the following gains are used by the gazebo_mimic_joint plugin
     left_inner_base_knuckle_joint:
       p: 0.2

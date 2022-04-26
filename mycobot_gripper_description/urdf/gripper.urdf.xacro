@@ -5,11 +5,7 @@
 	<xacro:include filename="$(find mycobot_description)/urdf/gripper/gripper.transmission.xacro" />
 	<xacro:include filename="$(find mycobot_description)/urdf/common.xacro" />
 
-	<material name="white">
-		<color rgba="0.79216 0.81961 0.93333 1" />
-	</material>
-
-<!-- ============================   Mycobot_Gripper   ============================ -->
+<!-- ============================   Mycobot_Arm   ============================ -->
 	<xacro:macro name="mycobot_gripper" params="parent *origin">
 		
 		
@@ -18,14 +14,17 @@
 			<inertial>
 				<origin xyz="0 -0.018162 0" rpy="1.5708 0 0" />
 				<mass value="0.03237" />
-				<inertia ixx="7.9803E-06" ixy="-3.7162E-08" ixz="4.3435E-07" iyy="1.0337E-05" iyz="3.3485E-07" izz="1.5321E-05" />
+				<inertia
+					ixx="7.9803E-06" ixy="-3.7162E-08" ixz="4.3435E-07" iyy="1.0337E-05" iyz="3.3485E-07" izz="1.5321E-05" />
 			</inertial>
 			<visual>
 				<origin xyz="0 0 0" rpy="0 0 0" />
 				<geometry>
 					<mesh filename="package://mycobot_description/meshes/gripper/base_link.STL" />
 				</geometry>
-				<material name="white" />
+				<material name="">
+					<color rgba="0.79216 0.81961 0.93333 1" />
+				</material>
 			</visual>
 			<collision>
 				<origin xyz="0 0 0" rpy="0 0 0" />
@@ -40,14 +39,17 @@
 			<inertial>
 				<origin xyz="-0.013688 0.0077832 0.01" rpy="0 0 0" />
 				<mass value="0.0027253" />
-				<inertia ixx="2.3883E-07" ixy="1.3724E-07" ixz="5.0465E-14" iyy="4.0216E-07" iyz="-1.3375E-14" izz="3.5516E-07" />
+				<inertia
+					ixx="2.3883E-07" ixy="1.3724E-07" ixz="5.0465E-14" iyy="4.0216E-07" iyz="-1.3375E-14" izz="3.5516E-07" />
 			</inertial>
 			<visual>
 				<origin xyz="0 0 0" rpy="0 0 0" />
 				<geometry>
 					<mesh filename="package://mycobot_description/meshes/gripper/left_inner_knuckle_link.STL" />
 				</geometry>
-				<material name="white" />
+				<material name="">
+					<color rgba="0.79216 0.81961 0.93333 1" />
+				</material>
 			</visual>
 			<collision>
 				<origin xyz="0 0 0" rpy="0 0 0" />
@@ -64,14 +66,17 @@
 		<inertial>
 			<origin xyz="-0.011258 -0.00023581 0.005" rpy="0 0 0" />
 			<mass value="0.0069464" />
-			<inertia ixx="3.0023E-07" ixy="1.5317E-07" ixz="2.0426E-16" iyy="1.5826E-06" iyz="-6.683E-17" izz="1.4568E-06" />
+			<inertia
+				ixx="3.0023E-07" ixy="1.5317E-07" ixz="2.0426E-16" iyy="1.5826E-06" iyz="-6.683E-17" izz="1.4568E-06" />
 		</inertial>
 		<visual>
 			<origin xyz="0 0 0" rpy="0 0 0" />
 			<geometry>
 				<mesh filename="package://mycobot_description/meshes/gripper/left_finger_link.STL" />
 			</geometry>
-			<material name="white" />
+			<material name="">
+		    <color rgba="0.79216 0.81961 0.93333 1" />
+		  </material>
 		</visual>
 		<collision>
 			<origin xyz="0 0 0" rpy="0 0 0" />
@@ -95,7 +100,9 @@
 				<geometry>
 					<mesh filename="package://mycobot_description/meshes/gripper/left_outer_knuckle_link.STL" />
 				</geometry>
-				<material name="white" />
+				<material name="">
+					<color rgba="0.79216 0.81961 0.93333 1" />
+				</material>
 			</visual>
 			<collision>
 				<origin xyz="0 0 0" rpy="0 0 0" />
@@ -117,7 +124,9 @@
 			<geometry>
 				<mesh filename="package://mycobot_description/meshes/gripper/right_inner_knuckle_link.STL" />
 			</geometry>
-			<material name="white" />
+			<material name="">
+				  <color rgba="0.79216 0.81961 0.93333 1" />
+      </material>
 		</visual>
 		<collision>
 			<origin xyz="0 0 0" rpy="0 0 0" />
@@ -141,7 +150,9 @@
 				<geometry>
 					<mesh filename="package://mycobot_description/meshes/gripper/right_finger_link.STL" />
 				</geometry>
-				<material name="white" />
+				<material name="">
+					<color rgba="0.79216 0.81961 0.93333 1" />
+		    </material>
 			</visual>
 			<collision>
 				<origin xyz="0 0 0" rpy="0 0 0" />
@@ -163,7 +174,9 @@
 				<geometry>
 					<mesh filename="package://mycobot_description/meshes/gripper/right_outer_knuckle_link.STL" />
 				</geometry>
-				<material name="white" />
+				<material name="">
+					<color rgba="0.79216 0.81961 0.93333 1" />
+				</material>
 			</visual>
 			<collision>
 				<origin xyz="0 0 0" rpy="0 0 0" />
@@ -172,17 +185,7 @@
 				</geometry>
 			</collision>
 		</link>
-
-		<!-- define the grasping frame-->
-		<link name="grasping_frame" />
-
 		
-		<joint name="grasping_frame_joint" type="fixed">
-			<parent link="gripper_base_link" />
-			<child link="grasping_frame" />
-			<origin rpy="${pi/2} 0 0" xyz="0 -0.0038 0.0533" />
-		</joint>
-
 		<!-- define the gripper base joint-->
 		<joint name="gripper_base_joint" type="fixed">
 			<xacro:insert_block name="origin" /> <!-- transform from parent link to this joint frame -->

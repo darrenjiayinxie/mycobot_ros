@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
-    <include file="$(find mycobot_gazebo)/launch/gazebo_empty_world.launch"/>
-    <include file="$(find mycobot_gazebo)/launch/spawn_mycobot.launch"/>
-    <include file="$(find mycobot_control)/launch/mycobot_trajectory_control.launch"/>
+    <!-- Launch Gazebo  -->
+    <include file="$(find mycobot_gazebo)/launch/mycobot_gazebo_world.launch" />
+
+    <!-- ros_control joint state controller launch file -->
+    <include file="$(find mycobot_gazebo)/launch/mycobot_gazebo_states.launch" />   
+
+    <!-- ros_control joint trajectory controller launch file -->
+    <include file="$(find mycobot_gazebo)/launch/mycobot_trajectory_controller.launch" />
     
+    <!-- load the rviz -->
     <arg name="gui" default="True" />
     <param name="use_gui" value="$(arg gui)" />
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(find mycobot_gazebo)/rviz_config/mycobot_with_gripper_camera.rviz" required="true" />
+    
+    <!-- Load teleop -->
+  <node name="rqt_joint_trajectory_controller" pkg="rqt_joint_trajectory_controller" type="rqt_joint_trajectory_controller" />
 </launch>
