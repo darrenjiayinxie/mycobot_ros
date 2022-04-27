@@ -14,7 +14,7 @@ mycobot:
       arm5_joint:                     {p:  2.0, i: 0, d: 0}
       arm5_flange_joint:              {p:  1.0, i: 0, d: 0}
   ###### Gripper #######
-      left_outer_base_knuckle_joint:    {p:  1.0, i: 0, d: 0   }   # active joint
+      left_outer_base_knuckle_joint:    {p:  1.0, i: 0, d: 0}   # active joint
 
 #### for mimic joints ####
 gazebo_ros_control:
