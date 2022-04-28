@@ -13,7 +13,6 @@
 
   <!-- Load updated joint limits (override information from URDF) -->
   <group ns="$(arg robot_description)_planning">
-    <param name="shape_transform_cache_lookup_wait_time" value="1" />
     <rosparam command="load" file="$(find mycobot_moveit_config)/config/joint_limits.yaml"/>
     <rosparam command="load" file="$(find mycobot_moveit_config)/config/cartesian_limits.yaml"/>
   </group>
