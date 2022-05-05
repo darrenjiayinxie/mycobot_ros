@@ -1,4 +1,5 @@
 # The name of this file shouldn't be changed, or else the Setup Assistant won't detect it
+
 #sensors:
 #  - sensor_plugin: occupancy_map_monitor/DepthImageOctomapUpdater
 #    image_topic: /d435_camera/depth/image_raw
@@ -10,4 +11,5 @@
 #    padding_offset: 0.01
 #    max_update_rate: 100.0
 #    filtered_cloud_topic: filtered_cloud
+
 

@@ -46,6 +46,7 @@ class MoveItIkDemo:
         arm.set_goal_orientation_tolerance(0.01)
        
         # 设置允许的最大速度和加速度
+
         arm.set_max_acceleration_scaling_factor(1)
         arm.set_max_velocity_scaling_factor(1)
 
@@ -59,6 +60,7 @@ class MoveItIkDemo:
         target_pose = PoseStamped()
         target_pose.header.frame_id = reference_frame
         target_pose.header.stamp = rospy.Time.now()     
+
         target_pose.pose.position.x = 0.1
         target_pose.pose.position.y = 0.01
         target_pose.pose.position.z = 0.2

@@ -164,7 +164,9 @@
 				<origin xyz = "0.0 0 -0.012 " rpy = " 0 0 0"/>
 			</collision>
 			<inertial>
+
 				<origin rpy="0 0 0" xyz="0 0 -0.006" />
+
 				<mass value="0.015" />
 				<inertia ixx="1.3e-6" ixy="0.0" ixz="0.0" iyy="1.3e-6" iyz="0.0" izz="2e-6" />
 			</inertial>
@@ -173,6 +175,7 @@
 		<!-- defining the joints -->
 		<joint name="arm1_joint" type="revolute">
 			<axis xyz="0 0 1"/>
+
 			<limit effort = "${Joint_effort}" lower = "${pi*-165/180}" upper = "${pi*165/180}" velocity = "0.2"/>
 			<dynamics damping="${Joint_damp}" friction= "${Joint_friction}"/>
 			<parent link="body_link"/>

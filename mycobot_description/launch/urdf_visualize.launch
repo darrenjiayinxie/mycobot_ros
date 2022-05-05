@@ -1,6 +1,7 @@
 <launch>
 
   <!-- USE: roslaunch mycobot_gazebo urdf_visualize.launch model:='$(find myrobot_package)/urdf/myrobot.urdf' -->
+
   <arg name="xacro_file_path" default=""/>
 
 	<arg name="urdf_rviz" default="$(find mycobot_description)/rviz_config/urdf.rviz"/>
