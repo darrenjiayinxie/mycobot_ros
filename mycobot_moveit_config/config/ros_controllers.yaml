@@ -1,0 +1,18 @@
+controller_list:
+  - name: /mycobot/arm_joint_position_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: True
+    joints:
+      - arm1_joint
+      - arm2_joint
+      - arm3_joint
+      - arm4_joint
+      - arm5_joint
+      - arm5_flange_joint
+  - name: /mycobot/finger_joint_position_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: True
+    joints:
+      - left_outer_base_knuckle_joint

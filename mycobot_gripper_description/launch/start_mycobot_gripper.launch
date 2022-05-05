@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+	<include file="$(find mycobot_gripper_description)/launch/gazebo_empty_world.launch"/>
+    <include file="$(find mycobot_gripper_description)/launch/spawn_mycobot_gripper.launch"/>
+    <include file="$(find mycobot_gripper_description)/launch/mycobot_gripper_control.launch"/>
+</launch>

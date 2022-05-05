@@ -1,0 +1,22 @@
+<launch>
+
+  <!-- USE: roslaunch mycobot_gazebo urdf_visualize.launch model:='$(find myrobot_package)/urdf/myrobot.urdf' -->
+  <arg name="xacro_file_path" default=""/>
+
+	<arg name="urdf_rviz" default="$(find mycobot_description)/rviz_config/urdf.rviz"/>
+	
+  <param name="robot_description" command="$(find xacro)/xacro --inorder $(arg xacro_file_path) use_nominal_extrinsics:=true add_plug:=true" />
+
+  <!-- send fake joint values -->
+  <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui"/>
+
+  <!-- Combine joint values -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
+  	<param name="publish_frequency" type="double" value="30.0" />
+  </node>
+
+  <!-- Show in Rviz   -->
+  <arg name="gui" default="True" />
+	<param name="use_gui" value="$(arg gui)" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg urdf_rviz)"/>
+</launch>

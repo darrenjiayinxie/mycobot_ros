@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: mycobot_description
+    relative_path: robots/mycobot_with_gripper_camera.urdf.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/mycobot.srdf
+  CONFIG:
+    author_name: Jiayin Xie
+    author_email: darrenjiayinxie@gmail.com
+    generated_timestamp: 1651740049

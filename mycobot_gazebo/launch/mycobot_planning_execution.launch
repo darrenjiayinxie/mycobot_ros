@@ -1,0 +1,32 @@
+<launch>
+  <!-- specify the planning pipeline -->
+  <arg name="pipeline" default="ompl" />
+  
+  <!-- By default, we are not in debug mode -->
+  <arg name="debug" default="false" />
+  <include file="$(find mycobot_moveit_config)/launch/move_group.launch">
+    <arg name="allow_trajectory_execution" value="true"/>
+    <arg name="publish_monitored_planning_scene" value="true" />
+    <arg name="info" value="true"/>
+    <arg name="debug" value="$(arg debug)"/>
+    <arg name="pipeline" value="$(arg pipeline)"/>
+  </include>
+
+  
+  <include file="$(find mycobot_moveit_config)/launch/moveit_rviz.launch">
+    <arg name="rviz_config" value="$(find mycobot_moveit_config)/launch/moveit.rviz"/>
+    <arg name="debug" value="$(arg debug)"/>
+  </include>
+  
+  
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <param name="/use_gui" value="false"/>
+    <rosparam param="/source_list">[/mycobot/joint_states]</rosparam>
+  </node>
+
+
+
+
+  
+
+</launch>

@@ -1,0 +1,27 @@
+# Note: You MUST load these PID parameters for all joints that are using the
+# PositionJointInterface, otherwise the arm + gripper will act like a giant
+# parachute, counteracting gravity, and causing some of the wheels to lose
+# contact with the ground, so the robot won't be able to properly navigate. See
+# https://github.com/ros-simulation/gazebo_ros_pkgs/issues/612
+mycobot:
+  gazebo_ros_control:
+    pid_gains:
+  ###### Arm ###########
+      arm1_joint:                     {p: 60.0, i: 0, d: 0}
+      arm2_joint:                     {p: 20.0, i: 0, d: 0}
+      arm3_joint:                     {p:  6.0, i: 0, d: 0}
+      arm4_joint:                     {p:  2.0, i: 0, d: 0}
+      arm5_joint:                     {p:  2.0, i: 0, d: 0}
+      arm5_flange_joint:              {p:  1.0, i: 0, d: 0}
+  ###### Gripper #######
+      left_outer_base_knuckle_joint:    {p:  1.0, i: 0, d: 0}   # active joint
+
+#### for mimic joints ####
+gazebo_ros_control:
+  pid_gains:
+    left_inner_base_knuckle_joint:    {p:  0.2, i: 0, d: 1e-3}   
+    left_inner_knuckle_finger_joint:  {p:  0.2, i: 0, d: 1e-3}   
+    right_inner_base_knuckle_joint:   {p:  0.2, i: 0, d: 1e-3}   
+    right_inner_knuckle_finger_joint: {p:  0.2, i: 0, d: 1e-3}   
+    right_outer_base_knuckle_joint:   {p:  0.2, i: 0, d: 1e-3}   
+

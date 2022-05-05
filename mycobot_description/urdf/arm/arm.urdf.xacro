@@ -1,0 +1,230 @@
+<?xml version="1.0"?>
+
+<!-- XML namespaces -->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+	<!-- Things that are needed only for Gazebo (not the physical robot).  These include
+	   sensor and controller plugin specifications -->
+	<xacro:include filename="$(find mycobot_description)/urdf/arm/arm.gazebo.xacro" />
+	<xacro:include filename="$(find mycobot_description)/urdf/arm/arm.transmission.xacro" />
+	<xacro:include filename="$(find mycobot_description)/urdf/common.xacro" />
+	
+	<!-- properties defined for joints -->
+	<xacro:property name="Joint_damp" value="1e-2"/>
+	<xacro:property name="Joint_friction" value="1e-2"/>
+	<xacro:property name="Joint_effort" value="1e3"/>
+  
+	<!-- ============================   Mycobot_Arm   ============================ -->
+	<xacro:macro name="mycobot_arm" params="parent *origin">
+		<joint name="body_joint" type="fixed">
+			<xacro:insert_block name="origin" /> <!-- transform from parent link to this joint frame -->
+			<parent link="${parent}"/>
+			<child link="body_link"/>
+		</joint>
+   
+    <!-- defining the links-->
+		<link name = "body_link">
+			<visual>
+				<geometry>
+					<mesh filename="package://mycobot_description/meshes/arm/body_link.dae"/>
+				</geometry>
+				<origin xyz = "0.0 0 0 " rpy = " 0 0 0"/>
+			</visual>
+			<collision>
+				<geometry>
+					<mesh filename="package://mycobot_description/meshes/arm/body_link.dae"/>
+				</geometry>
+				<origin xyz = "0.0 0 1e-5" rpy = " 0 0 0"/>
+			</collision>
+			<inertial>
+				<origin xyz="0.0112 0 0.03742" rpy="0 0 0"/> 
+				<mass value="0.35" />
+				<inertia ixx="3.82e-4" ixy="-1.628e-9" ixz="3.25e-6" iyy="5.09e-4" iyz="-1.66e-9" izz="5.38e-4" />
+			</inertial>
+		</link>
+
+
+
+		<link name="arm1_link">
+			<visual>
+				<geometry>
+					<mesh filename="package://mycobot_description/meshes/arm/arm1_link.dae"/>
+				</geometry>
+				<origin xyz = "0.0 0 -0.06096 " rpy = " 0 0 -1.5708"/>
+			</visual>
+			<collision>
+				<geometry>
+					<mesh filename="package://mycobot_description/meshes/arm/arm1_link.dae"/>
+				</geometry>
+				<origin xyz = "0.0 0 -0.06096 " rpy = " 0 0 -1.5708"/>
+			</collision>
+			<inertial>
+				<origin rpy="0 0 -1.5708" xyz="0 -0.006642 -0.02617" />
+				<mass value="0.075" />
+				<inertia ixx="5e-5" ixy="0" ixz="0" iyy="5e-5" iyz="0" izz="3e-5" />
+			</inertial>
+		</link>
+
+		<link name="arm2_link">
+			<visual>
+				<geometry>
+					<mesh filename="package://mycobot_description/meshes/arm/arm2_link.dae"/>
+				</geometry>
+				<origin xyz = "0.0 0 0.03256 " rpy = " 0 -1.5708 0"/>
+			</visual>
+			<collision>
+				<geometry>
+					<mesh filename="package://mycobot_description/meshes/arm/arm2_link.dae"/>
+				</geometry>
+				<origin xyz = "0.0 0 0.03256 " rpy = " 0 -1.5708 0"/>
+			</collision>
+			<inertial>
+				<origin rpy="0 -1.5708 0" xyz="-0.0543 0 0.058" />
+				<mass value="0.15" />
+				<inertia ixx="2e-4" ixy="0.0" ixz="0.0" iyy="2e-4" iyz="0.0" izz="5e-5" />
+			</inertial>
+		</link>
+
+
+		<link name="arm3_link">
+			<visual>
+				<geometry>
+					<mesh filename="package://mycobot_description/meshes/arm/arm3_link.dae"/>
+				</geometry>
+				<origin xyz = "0.0 0 0.03056 " rpy = " 0 -1.5708 0"/>
+			</visual>
+			<collision>
+				<geometry>
+					<mesh filename="package://mycobot_description/meshes/arm/arm3_link.dae"/>
+				</geometry>
+				<origin xyz = "0.0 0 0.03056 " rpy = " 0 -1.5708 0"/>
+			</collision>
+				<inertial>
+				<origin rpy="0 -1.5708 0" xyz="-0.05 0 0.003" />
+				<mass value="0.15" />
+				<inertia ixx="1.8e-4" ixy="0.0" ixz="0.0" iyy="1.8e-4" iyz="0.0" izz="4e-5" />
+			</inertial>
+		</link>
+
+
+		<link name="arm4_link">
+			<visual>
+				<geometry>
+					<mesh filename="package://mycobot_description/meshes/arm/arm4_link.dae"/>
+				</geometry>
+				<origin xyz = "0.0 0 -0.03356 " rpy = " -1.5708 0 0"/>
+			</visual>
+			<collision>
+				<geometry>
+					<mesh filename="package://mycobot_description/meshes/arm/arm4_link.dae"/>
+				</geometry>
+				<origin xyz = "0.0 0 -0.03356 " rpy = " -1.5708 0 0"/>
+			</collision>
+			<inertial>
+				<origin rpy="-1.5708 0 0" xyz="0 -0.005 -0.005" />
+				<mass value="0.05" />
+				<inertia ixx="1.8e-5" ixy="0.0" ixz="0.0" iyy="1.8e-5" iyz="0.0" izz="1.8e-5" />
+			</inertial>
+		</link>
+
+
+		<link name="arm5_link">
+			<visual>
+				<geometry>
+					<mesh filename="package://mycobot_description/meshes/arm/arm5_link.dae"/>
+				</geometry>
+				<origin xyz = "0.0 0 -0.038 " rpy = " 0 0 0"/>
+			</visual>
+			<collision>
+				<geometry>
+					<mesh filename="package://mycobot_description/meshes/arm/arm5_link.dae"/>
+				</geometry>
+			<origin xyz = "0.0 0 -0.038 " rpy = " 0 0 0"/>
+			</collision>
+			<inertial>
+				<origin rpy="0 0 0" xyz="0 0.0049 -0.005" />
+				<mass value="0.06" />
+				<inertia ixx="1.8e-5" ixy="0.0" ixz="0.0" iyy="1.8e-5" iyz="0.0" izz="1.8e-5" />
+			</inertial>
+		</link>
+
+
+
+		<link name="arm5_flange">
+			<visual>
+				<geometry>
+					<mesh filename="package://mycobot_description/meshes/arm/arm5_flange.dae"/>
+				</geometry>
+				<origin xyz = "0.0 0 -0.012 " rpy = " 0 0 0"/>
+			</visual>
+			<collision>
+				<geometry>
+					<mesh filename="package://mycobot_description/meshes/arm/arm5_flange.dae"/>
+				</geometry>
+				<origin xyz = "0.0 0 -0.012 " rpy = " 0 0 0"/>
+			</collision>
+			<inertial>
+				<origin rpy="0 0 0" xyz="0 0 -0.006" />
+				<mass value="0.015" />
+				<inertia ixx="1.3e-6" ixy="0.0" ixz="0.0" iyy="1.3e-6" iyz="0.0" izz="2e-6" />
+			</inertial>
+		</link>
+
+		<!-- defining the joints -->
+		<joint name="arm1_joint" type="revolute">
+			<axis xyz="0 0 1"/>
+			<limit effort = "${Joint_effort}" lower = "${pi*-165/180}" upper = "${pi*165/180}" velocity = "0.2"/>
+			<dynamics damping="${Joint_damp}" friction= "${Joint_friction}"/>
+			<parent link="body_link"/>
+			<child link="arm1_link"/>
+			<origin xyz= "0 0 0.13156" rpy = "0 0 0"/>
+		</joint>
+
+		<joint name="arm2_joint" type="revolute">
+			<axis xyz="0 0 1"/>
+			<limit effort = "${Joint_effort}" lower = "${pi*-165/180}" upper = "${pi*165/180}" velocity = "0.2"/>
+			<dynamics damping="${Joint_damp}" friction= "${Joint_friction}"/>
+			<parent link="arm1_link"/>
+			<child link="arm2_link"/>
+			<origin xyz= "0 0 0" rpy = " 0 ${pi / 2} ${-pi / 2}"/>
+		</joint>
+
+		<joint name="arm3_joint" type="revolute">
+			<axis xyz="0 0 1"/>
+			<limit effort = "${Joint_effort}" lower = "${pi*-165/180}" upper = "${pi*165/180}" velocity = "0.2"/>
+			<dynamics damping="${Joint_damp}" friction= "${Joint_friction}"/>
+			<parent link="arm2_link"/>
+			<child link="arm3_link"/>
+			<origin xyz= "-0.1104 0 0" rpy = "0 0 0"/>
+		</joint>
+
+		<joint name="arm4_joint" type="revolute">
+			<axis xyz="0 0 1"/>
+			<limit effort = "${Joint_effort}" lower = "${pi*-165/180}" upper = "${pi*165/180}" velocity = "0.2"/>
+			<dynamics damping="${Joint_damp}" friction= "${Joint_friction}"/>
+			<parent link="arm3_link"/>
+			<child link="arm4_link"/>
+			<origin xyz= "-0.096 0 0.06462" rpy = "0 0 ${-pi / 2}"/>
+		</joint>
+
+		<joint name="arm5_joint" type="revolute">
+			<axis xyz="0 0 1"/>
+			<limit effort = "${Joint_effort}" lower = "${pi*-165/180}" upper = "${pi*165/180}" velocity = "0.2"/>
+			<dynamics damping="${Joint_damp}" friction= "${Joint_friction}"/>
+			<parent link="arm4_link"/>
+			<child link="arm5_link"/>
+			<origin xyz= "0 -0.07318 0" rpy = "${pi / 2} ${-pi / 2} 0"/>
+		</joint>
+
+		<joint name="arm5_flange_joint" type="revolute">
+			<axis xyz="0 0 1"/> 
+			<limit effort = "${Joint_effort}" lower = "${pi*-175/180}" upper = "${pi*175/180}" velocity = "0.2"/>
+			<dynamics damping="${Joint_damp}" friction= "${Joint_friction}"/>
+			<parent link="arm5_link"/>
+			<child link="arm5_flange"/>
+			<origin xyz= "0 0.0456 0" rpy = "${-pi / 2} 0 0"/>
+		</joint>
+		
+	</xacro:macro>
+
+</robot>
