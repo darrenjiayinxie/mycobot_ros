@@ -1,5 +1,7 @@
 # mycobot_ros
-
+Unoffical mycobot ROS package 
+1. Moveit + Gazebo simulation 
+2. The gripper and RGBD sensor included
 ## Installation
 ### 1. Download the repository
 `cd ~/catkin_ws/src`<br>
@@ -14,5 +16,15 @@
 8. `sudo apt-get install ros-noetic-rqt-joint-trajectory-controller`
 9. `git clone https://github.com/JenniferBuehler/general-message-pkgs.git`
 10. `git clone https://github.com/JenniferBuehler/gazebo-pkgs.git`
+
+## Usage
+### Rviz
+
+### Gazebo
+
+### Moveit + Gazebo
+
+### Demo Scripts
+
 ## Acknowledgement
 
